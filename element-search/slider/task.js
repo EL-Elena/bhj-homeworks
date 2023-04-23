@@ -1,8 +1,6 @@
 const clickRight = document.querySelector('.slider__arrow_next');
 const clickLeft = document.querySelector('.slider__arrow_prev');
-const selectImg = document.querySelectorAll('.slider__item');
-
-let counter = 0;
+const selectImg = Array.from(document.querySelectorAll('.slider__item'));
 
 clickRight.onclick = () => {
   imgRight();
@@ -13,6 +11,7 @@ clickLeft.onclick = () => {
 };
 
 let imgRight = () => {
+  let counter = selectImg.findIndex(i => i.className.includes('slider__item_active'));
   if(counter == selectImg.length - 1){
     counter = 0;
     selectImg[counter].className += ' slider__item_active';
@@ -26,6 +25,7 @@ let imgRight = () => {
 }; 
 
 let imgLeft = () => {
+  let counter = selectImg.findIndex(i => i.className.includes('slider__item_active'));
   if(counter == 0){
     counter = selectImg.length - 1;
     selectImg[counter].className += ' slider__item_active';
